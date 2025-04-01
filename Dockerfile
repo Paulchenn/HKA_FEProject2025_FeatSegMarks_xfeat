@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 AS base
 
 # Set environment variables
 ENV TZ=Europe/Berlin \
@@ -24,6 +24,7 @@ RUN mkdir -p /etc/sudoers.d && echo "%sudo ALL=(ALL) NOPASSWD: ALL" | tee /etc/s
 ##############################################################################
 ##                            Global Dependencies                           ##
 ##############################################################################
+FROM base AS xfeatbase
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     nano htop git sudo wget curl gedit python3-pip \ 
@@ -35,9 +36,15 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 
 RUN pip install --no-cache-dir opencv-contrib-python tqdm
 
+FROM xfeatbase AS xfeatadvanced
+# Install additional dependencies if needed
+
+# RUN pip install --no-cache-dir <additional-dependencies>
+
 ##############################################################################
 ##                                 Torch directory                          ##
 ##############################################################################
+FROM xfeatadvanced AS localfilestage
 USER ${USER}
 # Copy local data files
 COPY ./data /home/${USER}/torch/data
