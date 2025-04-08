@@ -13,7 +13,7 @@ if [ -d "$TARGET_DIR/.git" ]; then
     echo "Repository already exists in $TARGET_DIR."
 else
     echo "Cloning repository..."
-    git clone "$REPO_URL" -b "BRANCH_NAME" "$TARGET_DIR"
+    git clone "$REPO_URL" -b "$BRANCH_NAME" "$TARGET_DIR"
 fi
 
 # Check if the local data and logs directories exist, if not create them
