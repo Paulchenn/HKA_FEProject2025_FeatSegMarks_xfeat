@@ -15,7 +15,7 @@ ARG GID=1000
 ENV USER=${USER}
 
 # Create user and group
-RUN groupadd -g ${GID} ${USER} && \
+RUN groupadd -o -g ${GID} ${USER} && \
     useradd -m -u ${UID} -g ${GID} -p "$(openssl passwd -1 ${PASSWORD})" --shell /bin/bash ${USER} -G sudo,video
 
 # Run sudo without password
