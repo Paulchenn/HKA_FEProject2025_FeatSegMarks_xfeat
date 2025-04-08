@@ -4,7 +4,7 @@ CONTAINER_NAME=xfeat_keypoint
 CONTAINER_TAG=latest
 
 # Define the target directory and repository URL
-TARGET_DIR="./code/xfeat"
+TARGET_DIR="./code/accelerated_features"
 REPO_URL="https://github.com/Odin-byte/accelerated_features.git"
 
 # Check if the directory exists and is a Git repository
