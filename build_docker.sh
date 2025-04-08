@@ -5,14 +5,15 @@ CONTAINER_TAG=latest
 
 # Define the target directory and repository URL
 TARGET_DIR="./code/xfeat"
-REPO_URL="https://github.com/Odin-byte/accelerated_features.git"
+REPO_URL="https://github.com/Paulchenn/HKA_FEProject2025_FeatSegMarks_acceFeatures.git"
+BRANCH_NAME="main"
 
 # Check if the directory exists and is a Git repository
 if [ -d "$TARGET_DIR/.git" ]; then
     echo "Repository already exists in $TARGET_DIR."
 else
     echo "Cloning repository..."
-    git clone "$REPO_URL" "$TARGET_DIR"
+    git clone "$REPO_URL" -b "BRANCH_NAME" "$TARGET_DIR"
 fi
 
 # Check if the local data and logs directories exist, if not create them
