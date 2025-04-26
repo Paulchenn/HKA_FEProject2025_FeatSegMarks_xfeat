@@ -6,7 +6,7 @@
 COMMAND=${1:-bash}
 CONTAINER_NAME=xfeat_keypoint
 CONTAINER_TAG=latest
-LOCAL_DATA_PATH="$PWD/data"
+LOCAL_DATA_PATH="/media/dominik/PG_1TB_01/xfeat_data"
 LOCAL_CODE_PATH="$PWD/code"
 LOCAL_LOG_PATH="$PWD/logs"
 

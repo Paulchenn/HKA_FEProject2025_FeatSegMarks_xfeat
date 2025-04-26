@@ -28,13 +28,13 @@ FROM base AS xfeatbase
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     nano htop git sudo wget curl gedit python3-pip \ 
-    ffmpeg libsm6 libxext6 \
+    ffmpeg libsm6 libxext6 librsvg2-common \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
-RUN pip install --no-cache-dir opencv-contrib-python tqdm
+RUN pip install --no-cache-dir opencv-contrib-python tqdm matplotlib opencv-contrib-python-headless==4.10.0.84 poselib kornia==0.7.2 gdown tensorboard h5py
 
 FROM xfeatbase AS xfeatadvanced
 # Install additional dependencies if needed

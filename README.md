@@ -14,6 +14,12 @@ docker exec -it xfeat_keypoint bash
 ```
 to connect to the running container. Or just rerun the `start_docker.sh` script within a second terminal.
 
+Within the docker change your directory into the 'accelerated features' root folder. Then you can run:
+```bash
+python3 -m modules.training.train --training_type xfeat_default --megadepth_root_path /home/docker/torch/data/megadepth/ --synthetic_root_path /home/docker/torch/data/coco_20k/ --ckpt_save_path /home/docker/torch/logs/
+```
+within the module folder of xfeat to start the training.
+
 ## Code management using git
 This repo itself contains the utilities needed to work with the xFeat network architecture within pytorch.
 After building the container, you will find another repo within the code repository, which holds the source code for the xFeat network.
