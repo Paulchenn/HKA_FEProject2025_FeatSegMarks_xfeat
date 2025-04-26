@@ -4,7 +4,7 @@ CONTAINER_NAME=xfeat_keypoint
 CONTAINER_TAG=latest
 
 # Define the target directory and repository URL
-TARGET_DIR="./code/xfeat"
+TARGET_DIR="./code/accelerated_features"
 REPO_URL="https://github.com/Paulchenn/HKA_FEProject2025_FeatSegMarks_acceFeatures.git"
 BRANCH_NAME="main"
 
@@ -13,7 +13,7 @@ if [ -d "$TARGET_DIR/.git" ]; then
     echo "Repository already exists in $TARGET_DIR."
 else
     echo "Cloning repository..."
-    git clone "$REPO_URL" -b "$BRANCH_NAME" "$TARGET_DIR"
+    git clone --recursive "$REPO_URL" -b "$BRANCH_NAME" "$TARGET_DIR"
 fi
 
 # Check if the local data and logs directories exist, if not create them
