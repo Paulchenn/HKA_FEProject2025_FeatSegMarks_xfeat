@@ -34,7 +34,9 @@ RUN apt-get update && \
 # Install Python dependencies
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
-RUN pip install --no-cache-dir opencv-contrib-python tqdm matplotlib opencv-contrib-python-headless==4.10.0.84 poselib kornia==0.7.2 gdown tensorboard h5py
+# Install other dependencies
+RUN pip install --no-cache-dir opencv-contrib-python tqdm matplotlib opencv-contrib-python-headless==4.10.0.84 kornia==0.7.2 gdown tensorboard h5py poselib
+
 
 FROM xfeatbase AS xfeatadvanced
 # Install additional dependencies if needed
