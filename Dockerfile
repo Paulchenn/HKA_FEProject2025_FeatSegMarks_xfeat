@@ -27,16 +27,37 @@ RUN mkdir -p /etc/sudoers.d && echo "%sudo ALL=(ALL) NOPASSWD: ALL" | tee /etc/s
 FROM base AS xfeatbase
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
-    nano htop git sudo wget curl gedit python3-pip \ 
-    ffmpeg libsm6 libxext6 librsvg2-common \
+        nano \
+        htop \
+        git \
+        sudo \
+        wget \
+        curl \
+        gedit \
+        python3-pip \
+        ffmpeg \
+        libsm6 \
+        libxext6 \
+        librsvg2-common \
+        build-essential \
+        gcc \
+        g++ \
+        cmake \
+        ninja-build \
+        python3-dev \
+        libeigen3-dev \
     && rm -rf /var/lib/apt/lists/*
+
+RUN python3 --version
 
 # Install Python dependencies
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # Install other dependencies
-RUN pip install --no-cache-dir opencv-contrib-python tqdm matplotlib opencv-contrib-python-headless==4.10.0.84 kornia==0.7.2 gdown tensorboard h5py poselib
+RUN pip install --no-cache-dir opencv-contrib-python tqdm matplotlib opencv-contrib-python-headless==4.10.0.84 kornia==0.7.2 gdown tensorboard h5py
 
+RUN pip install --upgrade pip
+RUN pip install git+https://github.com/PoseLib/PoseLib.git
 
 FROM xfeatbase AS xfeatadvanced
 # Install additional dependencies if needed
