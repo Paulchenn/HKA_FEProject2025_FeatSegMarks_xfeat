@@ -45,15 +45,17 @@ FROM xfeatbase AS xfeatadvanced
 ##                                 Torch directory                          ##
 ##############################################################################
 FROM xfeatadvanced AS localfilestage
-USER ${USER}
+
 # Copy local data files
-COPY ./data /home/${USER}/torch/data
+COPY --chown=${USER}:${USER} ./data /home/${USER}/torch/data
 
 # Copy local code files
-COPY ./code /home/${USER}/torch/code
+COPY --chown=${USER}:${USER} ./code /home/${USER}/torch/code
 
 # Copy local log files
-COPY ./logs /home/${USER}/torch/logs
+COPY --chown=${USER}:${USER} ./logs /home/${USER}/torch/logs
+
+USER ${USER}
 WORKDIR /home/${USER}/torch/
 
 CMD ["bash"]
