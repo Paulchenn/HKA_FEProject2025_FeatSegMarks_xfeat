@@ -56,6 +56,7 @@ RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/c
 
 # Install other dependencies
 RUN pip install --no-cache-dir \
+    numpy==1.26.4 \
     opencv-contrib-python \
     tqdm \
     matplotlib \
@@ -64,6 +65,7 @@ RUN pip install --no-cache-dir \
     gdown \
     tensorboard \
     h5py \
+    scikit-image \
     git+https://github.com/PoseLib/PoseLib.git
 
 FROM xfeatbase AS xfeatadvanced
